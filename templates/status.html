@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>병원 정보 스크래퍼 - 상태</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 50px; }
+        .status-container { max-width: 500px; margin: 0 auto; }
+        .loading { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(0,0,0,.3); 
+                  border-radius: 50%; border-top-color: #007bff; animation: spin 1s ease-in-out infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="status-container">
+            <h1 class="mb-4 text-center">작업 상태</h1>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {% if status.status == "processing" %}
+                            <div class="loading me-2"></div> 처리 중
+                        {% elif status.status == "completed" %}
+                            <span class="text-success">✓</span> 완료됨
+                        {% elif status.status == "error" %}
+                            <span class="text-danger">✗</span> 오류 발생
+                        {% else %}
+                            대기 중
+                        {% endif %}
+                    </h5>
+                    
+                    <p class="card-text">{{ status.message }}</p>
+                    
+                    {% if status.status == "completed" and status.file %}
+                        <a href="{{ url_for('download_file', filename=status.file) }}" class="btn btn-success w-100">
+                            엑셀 파일 다운로드
+                        </a>
+                    {% endif %}
+                    
+                    {% if status.status == "completed" or status.status == "error" %}
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary w-100 mt-2">
+                            처음으로 돌아가기
+                        </a>
+                    {% else %}
+                        <div class="text-center mt-3">
+                            <p>페이지를 새로고침하여 상태를 업데이트하세요.</p>
+                            <a href="{{ url_for('status') }}" class="btn btn-outline-primary">새로고침</a>
+                        </div>
+                        <script>
+                            // 5초마다 자동 새로고침
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 5000);
+                        </script>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
