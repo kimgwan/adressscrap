@@ -326,12 +326,5 @@ def download_file(filename):
     user_dir = os.path.join(UPLOAD_FOLDER, user_id)
     return send_file(os.path.join(user_dir, filename), as_attachment=True)
 
-@app.route('/map')
-def map():
-    # 여기에서 카카오맵 API 키를 설정합니다.
-    # 실제 사용 시에는 환경 변수 등으로 관리하는 것이 안전합니다.
-    kakao_api_key = "5fb400de8ccd0bf79c29e42c072b969f"
-    return render_template('map.html', kakao_api_key=kakao_api_key)
-
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

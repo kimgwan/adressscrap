@@ -1,0 +1,35 @@
+[33mcommit a67de9ef1727643f7cf145825ab4a16ae9986a3c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: 김광민 <tpry2010@gmail.com>
+Date:   Thu Apr 3 00:11:07 2025 +0900
+
+    flask CORS 설정
+
+[33mcommit d82bd77fe7bd0030763bce6a0b3ba4d92da30adb[m
+Author: 김광민 <tpry2010@gmail.com>
+Date:   Wed Apr 2 23:46:43 2025 +0900
+
+    카카오맵 v3로드지연처리
+
+[33mcommit 0538b0c97ed7e8b1149067b8d21a8d384bcfee05[m
+Author: 김광민 <tpry2010@gmail.com>
+Date:   Wed Apr 2 22:51:01 2025 +0900
+
+    sdk로딩 확인
+
+[33mcommit c8bd1c50fb002f191758f398fdda6fea37e4e05f[m
+Author: 김광민 <tpry2010@gmail.com>
+Date:   Wed Apr 2 22:00:03 2025 +0900
+
+    pip파일
+
+[33mcommit 1f86e056388e1461204cd6aaff8bb41f2b2bba9d[m
+Author: 김광민 <tpry2010@gmail.com>
+Date:   Wed Apr 2 21:21:55 2025 +0900
+
+    Initial commit
+
+[33mcommit 04dcf069cc0ecb7c09dc0a2971e715e0b6dd9021[m
+Author: 김광민 <tpry2010@gmail.com>
+Date:   Wed Apr 2 21:20:32 2025 +0900
+
+    Initial commit
