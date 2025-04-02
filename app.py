@@ -317,14 +317,5 @@ def status():
     
     return render_template('status.html', status=task_status[user_id])
 
-@app.route('/download/<filename>')
-def download_file(filename):
-    user_id = session.get('user_id')
-    if not user_id:
-        return redirect(url_for('index'))
-    
-    user_dir = os.path.join(UPLOAD_FOLDER, user_id)
-    return send_file(os.path.join(user_dir, filename), as_attachment=True)
-
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
