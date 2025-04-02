@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import re
 from collections import defaultdict
@@ -56,7 +57,7 @@ def get_hospital_data(name, password, taskID, user_id):
         
         url = "https://agent-front.green-ribbon.co.kr/"
         if not taskID:
-            task_status[user_id] = {"status": "error", "message": "taskID가 없으면 해당 URL을 생성할 수 없습니다."}
+            task_status[user_id] = {"status": "error", "message": "업무무ID가 작업을 진행할 수 없습니다."}
             return None
 
         url2 = f"https://agent-front.green-ribbon.co.kr/v2/check-list/{taskID}"
@@ -69,7 +70,7 @@ def get_hospital_data(name, password, taskID, user_id):
         options.add_argument('--disable-gpu')
         options.add_argument('--window-size=1920,1080')
         
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
         
         task_status[user_id] = {"status": "processing", "message": "웹사이트에 접속 중..."}
 
