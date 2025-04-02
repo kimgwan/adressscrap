@@ -1,93 +1,56 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>카카오맵 연동 예제</title>
     <style>
-        #map {
-            width: 100%;
-            height: 500px;
-            margin-top: 20px;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        button {
-            background-color: #FEE500;
-            border: none;
-            color: #000;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        button:hover {
-            background-color: #F6D800;
-        }
-
-        .controls {
-            margin-bottom: 15px;
-        }
-
-        .info {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-        }
+        #map { width: 100%; height: 500px; margin-top: 20px; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { color: #333; }
+        button { background-color: #FEE500; border: none; color: #000; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-right: 10px; }
+        button:hover { background-color: #F6D800; }
+        .controls { margin-bottom: 15px; }
+        .info { margin-top: 15px; padding: 10px; background-color: #f8f8f8; border-radius: 5px; }
     </style>
 </head>
-
 <body>
     <h1>카카오맵 API 예제</h1>
-
+    
     <div class="controls">
         <button onclick="setCenter()">현재 중심으로</button>
         <button onclick="panTo()">스무스하게 이동</button>
         <input type="text" id="search-input" placeholder="장소 검색">
         <button onclick="searchPlace()">검색</button>
     </div>
-
+    
     <div id="map"></div>
-
+    
     <div class="info">
         <p>현재 중심 좌표: <span id="center-coord"></span></p>
     </div>
 
     <!-- Kakao Maps SDK 로드 (app.py에서 API 키 삽입) -->
-    <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ kakao_api_key }}&libraries=services"></script>
-
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ kakao_api_key }}&libraries=services"></script>
+    
     <!-- 지도 초기화 및 이벤트 핸들러 -->
-    <script>
-        function initMap() {
-
+    <script type="text/javascript">
+        kakao.maps.load(function initMap() {
             // kakao 객체가 정의되었는지 확인
-            if (typeof kakao === 'undefined' || !kakao.maps) {
-                console.error('Kakao Maps SDK가 로드되지 않았습니다.');
-                return;
-            }
+        if (typeof kakao === 'undefined' || !kakao.maps) {
+            console.error('Kakao Maps SDK가 로드되지 않았습니다.');
+            return;
+        }
             var mapContainer = document.getElementById('map'),
-                mapOption = {
+                mapOption = { 
                     center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울 중심 좌표
                     level: 3 // 확대 레벨
                 };
 
             // 지도 생성
             var map = new kakao.maps.Map(mapContainer, mapOption);
-
+            
             // 지도에 클릭 이벤트 등록
-            kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
                 var latlng = mouseEvent.latLng;
                 var marker = new kakao.maps.Marker({
                     position: latlng
@@ -97,30 +60,30 @@
             });
 
             // 현재 지도 중심으로 이동하는 함수
-            window.setCenter = function () {  // 전역 함수로 정의
+            window.setCenter = function() {  // 전역 함수로 정의
                 var center = map.getCenter();
                 document.getElementById('center-coord').innerText = '위도 ' + center.getLat() + ', 경도 ' + center.getLng();
             };
 
             // 지도 중심을 부드럽게 이동시키는 함수
-            window.panTo = function () {  // 전역 함수로 정의
+            window.panTo = function() {  // 전역 함수로 정의
                 var moveLatLon = new kakao.maps.LatLng(37.4980, 127.0276);
                 map.panTo(moveLatLon);
-                setTimeout(function () {
+                setTimeout(function() {
                     var center = map.getCenter();
                     document.getElementById('center-coord').innerText = '위도 ' + center.getLat() + ', 경도 ' + center.getLng();
                 }, 1000);
             };
 
             // 장소 검색 함수
-            window.searchPlace = function () {  // 전역 함수로 정의
+            window.searchPlace = function() {  // 전역 함수로 정의
                 var input = document.getElementById('search-input').value;
                 if (!input.trim()) {
                     alert('검색어를 입력해주세요');
                     return;
                 }
                 var ps = new kakao.maps.services.Places();
-                ps.keywordSearch(input, function (data, status) {
+                ps.keywordSearch(input, function(data, status) {
                     if (status === kakao.maps.services.Status.OK) {
                         var firstItem = data[0];
                         var moveLatLon = new kakao.maps.LatLng(firstItem.y, firstItem.x);
@@ -139,11 +102,10 @@
             // 초기 중심 좌표 표시
             var center = map.getCenter();
             document.getElementById('center-coord').innerText = '위도 ' + center.getLat() + ', 경도 ' + center.getLng();
-        }
+        });
 
         // SDK 로드 후 initMap 실행
         window.onload = initMap;
     </script>
 </body>
-
 </html>
