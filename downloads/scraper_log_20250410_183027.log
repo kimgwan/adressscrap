@@ -1,0 +1,88 @@
+2025-04-10 18:30:27,038 - WARNING -  * Debugger is active!
+2025-04-10 18:30:27,042 - INFO -  * Debugger PIN: 223-227-463
+2025-04-10 18:30:29,189 - INFO - 127.0.0.1 - - [10/Apr/2025 18:30:29] "GET / HTTP/1.1" 200 -
+2025-04-10 18:30:29,247 - INFO - 127.0.0.1 - - [10/Apr/2025 18:30:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-10 18:30:40,853 - INFO - 127.0.0.1 - - [10/Apr/2025 18:30:40] "POST /login HTTP/1.1" 200 -
+2025-04-10 18:30:48,438 - INFO - 127.0.0.1 - - [10/Apr/2025 18:30:48] "[32mPOST /scrape HTTP/1.1[0m" 302 -
+2025-04-10 18:30:48,446 - INFO - 127.0.0.1 - - [10/Apr/2025 18:30:48] "GET /status HTTP/1.1" 200 -
+2025-04-10 18:30:53,475 - INFO - 127.0.0.1 - - [10/Apr/2025 18:30:53] "GET /status HTTP/1.1" 200 -
+2025-04-10 18:30:53,820 - INFO - ¿•ªÁ¿Ã∆Æ ¡¢º”
+2025-04-10 18:30:54,373 - INFO - æ∆¿Ãµ ¿‘∑¬
+2025-04-10 18:30:54,411 - INFO - ∆–Ω∫øˆµÂ ¿‘∑¬
+2025-04-10 18:30:54,455 - INFO - ∑Œ±◊¿Œ øœ∑·
+2025-04-10 18:30:55,086 - INFO - main ≈¬±◊ ∑Œµ˘ øœ∑·
+2025-04-10 18:30:55,203 - INFO - ø¢ºø ∆ƒ¿œ ¿˙¿Â øœ∑· (¡ﬂ∫π ¡÷º“ ªˆªÛ ¿˚øÎ): C:\Users\tpry2\OneDrive\πŸ≈¡ »≠∏È\project\test\downloads\87b0ec64-5cec-4356-a09f-23733dad638e\hospital_data_20250410_183055.xlsx
+2025-04-10 18:30:55,206 - INFO - HTML ¿˙¿Â ∞Ê∑Œ: C:\Users\tpry2\OneDrive\πŸ≈¡ »≠∏È\project\test\downloads\87b0ec64-5cec-4356-a09f-23733dad638e\page_source.html
+2025-04-10 18:30:58,494 - INFO - 127.0.0.1 - - [10/Apr/2025 18:30:58] "GET /status HTTP/1.1" 200 -
+2025-04-10 18:31:32,063 - INFO - 127.0.0.1 - - [10/Apr/2025 18:31:32] "GET /downloads/hospital_data_20250410_183055.xlsx HTTP/1.1" 200 -
+2025-04-10 18:31:57,495 - INFO - 127.0.0.1 - - [10/Apr/2025 18:31:57] "POST /login HTTP/1.1" 200 -
+2025-04-10 18:31:59,491 - INFO - 127.0.0.1 - - [10/Apr/2025 18:31:59] "POST /login HTTP/1.1" 200 -
+2025-04-10 18:32:10,904 - INFO - 127.0.0.1 - - [10/Apr/2025 18:32:10] "[32mPOST /scrape HTTP/1.1[0m" 302 -
+2025-04-10 18:32:10,907 - INFO - 127.0.0.1 - - [10/Apr/2025 18:32:10] "GET /status HTTP/1.1" 200 -
+2025-04-10 18:32:12,773 - INFO - ¿•ªÁ¿Ã∆Æ ¡¢º”
+2025-04-10 18:32:13,330 - INFO - æ∆¿Ãµ ¿‘∑¬
+2025-04-10 18:32:13,366 - INFO - ∆–Ω∫øˆµÂ ¿‘∑¬
+2025-04-10 18:32:13,402 - INFO - ∑Œ±◊¿Œ øœ∑·
+2025-04-10 18:32:14,104 - INFO - main ≈¬±◊ ∑Œµ˘ øœ∑·
+2025-04-10 18:32:14,116 - ERROR - ø¿∑˘ πﬂª˝ (∫Ì∑œ 1 √≥∏Æ ¡ﬂ): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.flex.items-center.space-x-2 > p.font-semibold"}
+  (Session info: chrome=135.0.7049.42); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF61FFD5335+78597]
+	GetHandleVerifier [0x00007FF61FFD5390+78688]
+	(No symbol) [0x00007FF61FD891AA]
+	(No symbol) [0x00007FF61FDDF149]
+	(No symbol) [0x00007FF61FDDF3FC]
+	(No symbol) [0x00007FF61FDD1BEC]
+	(No symbol) [0x00007FF61FE0712F]
+	(No symbol) [0x00007FF61FDD1AB6]
+	(No symbol) [0x00007FF61FE07300]
+	(No symbol) [0x00007FF61FE2F2BB]
+	(No symbol) [0x00007FF61FE06EC3]
+	(No symbol) [0x00007FF61FDD03F8]
+	(No symbol) [0x00007FF61FDD1163]
+	GetHandleVerifier [0x00007FF62027EEED+2870973]
+	GetHandleVerifier [0x00007FF620279698+2848360]
+	GetHandleVerifier [0x00007FF620296973+2967875]
+	GetHandleVerifier [0x00007FF61FFF017A+188746]
+	GetHandleVerifier [0x00007FF61FFF845F+222255]
+	GetHandleVerifier [0x00007FF61FFDD2B4+111236]
+	GetHandleVerifier [0x00007FF61FFDD462+111666]
+	GetHandleVerifier [0x00007FF61FFC3589+5465]
+	BaseThreadInitThunk [0x00007FF987E7E8D7+23]
+	RtlUserThreadStart [0x00007FF9893D14FC+44]
+
+2025-04-10 18:32:14,121 - ERROR - ø¿∑˘ πﬂª˝ (∫Ì∑œ 2 √≥∏Æ ¡ﬂ): Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.flex.items-center.space-x-2 > p.font-semibold"}
+  (Session info: chrome=135.0.7049.42); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF61FFD5335+78597]
+	GetHandleVerifier [0x00007FF61FFD5390+78688]
+	(No symbol) [0x00007FF61FD891AA]
+	(No symbol) [0x00007FF61FDDF149]
+	(No symbol) [0x00007FF61FDDF3FC]
+	(No symbol) [0x00007FF61FDD1BEC]
+	(No symbol) [0x00007FF61FE0712F]
+	(No symbol) [0x00007FF61FDD1AB6]
+	(No symbol) [0x00007FF61FE07300]
+	(No symbol) [0x00007FF61FE2F2BB]
+	(No symbol) [0x00007FF61FE06EC3]
+	(No symbol) [0x00007FF61FDD03F8]
+	(No symbol) [0x00007FF61FDD1163]
+	GetHandleVerifier [0x00007FF62027EEED+2870973]
+	GetHandleVerifier [0x00007FF620279698+2848360]
+	GetHandleVerifier [0x00007FF620296973+2967875]
+	GetHandleVerifier [0x00007FF61FFF017A+188746]
+	GetHandleVerifier [0x00007FF61FFF845F+222255]
+	GetHandleVerifier [0x00007FF61FFDD2B4+111236]
+	GetHandleVerifier [0x00007FF61FFDD462+111666]
+	GetHandleVerifier [0x00007FF61FFC3589+5465]
+	BaseThreadInitThunk [0x00007FF987E7E8D7+23]
+	RtlUserThreadStart [0x00007FF9893D14FC+44]
+
+2025-04-10 18:32:15,927 - INFO - 127.0.0.1 - - [10/Apr/2025 18:32:15] "GET /status HTTP/1.1" 200 -
+2025-04-10 18:32:20,956 - INFO - 127.0.0.1 - - [10/Apr/2025 18:32:20] "GET /status HTTP/1.1" 200 -
+2025-04-10 18:32:25,098 - INFO - ø¢ºø ∆ƒ¿œ ¿˙¿Â øœ∑· (¡ﬂ∫π ¡÷º“ ªˆªÛ ¿˚øÎ): C:\Users\tpry2\OneDrive\πŸ≈¡ »≠∏È\project\test\downloads\87b0ec64-5cec-4356-a09f-23733dad638e\hospital_data_20250410_183225.xlsx
+2025-04-10 18:32:25,107 - INFO - HTML ¿˙¿Â ∞Ê∑Œ: C:\Users\tpry2\OneDrive\πŸ≈¡ »≠∏È\project\test\downloads\87b0ec64-5cec-4356-a09f-23733dad638e\page_source.html
+2025-04-10 18:32:26,619 - INFO - 127.0.0.1 - - [10/Apr/2025 18:32:26] "GET /status HTTP/1.1" 200 -
+2025-04-10 18:32:30,756 - INFO - 127.0.0.1 - - [10/Apr/2025 18:32:30] "GET /downloads/hospital_data_20250410_183225.xlsx HTTP/1.1" 200 -
+2025-04-10 18:33:34,595 - INFO - 127.0.0.1 - - [10/Apr/2025 18:33:34] "[36mGET /downloads/hospital_data_20250410_183225.xlsx HTTP/1.1[0m" 304 -
+2025-04-10 18:34:51,818 - INFO -  * Detected change in 'C:\\Users\\tpry2\\OneDrive\\πŸ≈¡ »≠∏È\\project\\test\\app.py', reloading

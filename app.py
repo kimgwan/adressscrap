@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, redirect, url_for, session
+from flask import Flask, render_template, request, send_file, redirect, url_for, session, send_from_directory
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -12,12 +12,13 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 import uuid
 import threading
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key_here"  # 세션을 위한 비밀 키
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)  # 세션 유효 시간 설정
 
 # 파일 저장 디렉토리
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'downloads')
@@ -97,7 +98,7 @@ def get_hospital_data(name, password, taskID, user_id):
         # 3. 병원 데이터 추출
         block_elements = driver.find_elements(By.CSS_SELECTOR, "body > main > div > div.pt-2 > div")
         name_pattern = re.compile(r'^[가-힣]{2,4}$')
-        exclude_keywords = {"고객정보복사", "실손", "특급대행", "진행중", "자보", "골절"}
+        exclude_keywords = {"고객정보복사", "실손", "특급대행", "진행중", "자보", "골절", "배정완료"}
 
         hospital_data = defaultdict(lambda: {"addresses": set(), "names": set()})
         
@@ -268,7 +269,12 @@ def get_hospital_data(name, password, taskID, user_id):
             file.write(driver.page_source)
         logger.info(f"HTML 저장 경로: {html_path}")
         
-        task_status[user_id] = {"status": "completed", "message": "작업이 완료되었습니다.", "file": excel_filename}
+        task_status[user_id] = {
+            "status": "completed", 
+            "message": "작업이 완료되었습니다.", 
+            "file": excel_filename,
+            "user_id": user_id  # 사용자 ID도 저장
+        }
         return excel_filename
 
     except Exception as e:
@@ -277,7 +283,8 @@ def get_hospital_data(name, password, taskID, user_id):
         return None
 
     finally:
-        driver.quit()
+        if 'driver' in locals():
+            driver.quit()
 
 @app.route('/')
 def index():
@@ -301,6 +308,7 @@ def scrape():
         return render_template('dashboard.html', error="모든 필드를 입력해주세요.")
     
     user_id = session.get('user_id', str(uuid.uuid4()))
+    session['user_id'] = user_id  # 세션에 저장 확실히
     
     # 비동기로 작업 실행
     thread = threading.Thread(target=get_hospital_data, args=(name, password, taskID, user_id))
@@ -316,6 +324,18 @@ def status():
         return render_template('status.html', status={"status": "not_started", "message": "작업이 시작되지 않았습니다."})
     
     return render_template('status.html', status=task_status[user_id])
+
+@app.route('/downloads/<path:filename>')
+def download_file(filename):
+    user_id = session.get('user_id')
+    if not user_id:
+        return "사용자 정보를 찾을 수 없습니다. 다시 로그인해주세요.", 403
+    
+    user_dir = os.path.join(UPLOAD_FOLDER, user_id)
+    if not os.path.exists(os.path.join(user_dir, filename)):
+        return "파일을 찾을 수 없습니다.", 404
+    
+    return send_from_directory(user_dir, filename, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
