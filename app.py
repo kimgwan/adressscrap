@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 import time
 import re
 from collections import defaultdict
@@ -70,7 +72,8 @@ def get_hospital_data(name, password, taskID, user_id):
         options.add_argument('--disable-gpu')
         options.add_argument('--window-size=1920,1080')
         
-        driver = webdriver.Chrome(options=options)
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
         
         task_status[user_id] = {"status": "processing", "message": "웹사이트에 접속 중..."}
 
